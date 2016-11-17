@@ -284,12 +284,18 @@ local function main(params)
     local verbose = (params.print_iter > 0 and t % params.print_iter == 0)
     if verbose then
       print(string.format('Iteration %d / %d', t, params.num_iterations))
+	  local closs = 0
       for i, loss_module in ipairs(content_losses) do
         print(string.format('  Content %d loss: %f', i, loss_module.loss))
+		closs = closs + loss_module.loss
       end
+	  print(string.format('  Content total loss: %f', closs))
+	  local sloss = 0
       for i, loss_module in ipairs(style_losses) do
         print(string.format('  Style %d loss: %f', i, loss_module.loss))
+		sloss = sloss + loss_module.loss
       end
+	  print(string.format('  Style total loss: %f', sloss))
       print(string.format('  Total loss: %f', loss))
     end
   end
