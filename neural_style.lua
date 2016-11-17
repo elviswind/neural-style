@@ -289,13 +289,13 @@ local function main(params)
         print(string.format('  Content %d loss: %f', i, loss_module.loss))
 		closs = closs + loss_module.loss
       end
-	  print(string.format('  Content total loss: %f', closs))
+	  print(string.format('  Content total loss: %f K', closs/ 1000))
 	  local sloss = 0
       for i, loss_module in ipairs(style_losses) do
         print(string.format('  Style %d loss: %f', i, loss_module.loss))
 		sloss = sloss + loss_module.loss
       end
-	  print(string.format('  Style total loss: %f', sloss))
+	  print(string.format('  Style total loss: %f K', sloss/ 1000))
       print(string.format('  Total loss: %f', loss))
     end
   end
