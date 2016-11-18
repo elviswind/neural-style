@@ -9,7 +9,7 @@ require 'loadcaffe'
 local cmd = torch.CmdLine()
 
 -- Basic options
-cmd:option('-style_image', 'examples/inputs/seated-nude.jpg',
+cmd:option('-style_image', '~/images/styleD.jpg',
            'Style target image')
 cmd:option('-style_blend_weights', 'nil')
 cmd:option('-content_image', 'examples/inputs/tubingen.jpg',
