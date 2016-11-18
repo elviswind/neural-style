@@ -179,7 +179,8 @@ local function main(params)
         local norm = params.normalize_gradients
         local loss_module
 		if name == 'relu1_1' then
-		  loss_module = nn.ContentLoss(50, target, norm):float()
+		  print('add special weight to relu1_1')
+		  loss_module = nn.ContentLoss(300, target, norm):float()
 		else
 		  loss_module = nn.ContentLoss(params.content_weight, target, norm):float()
 		end
