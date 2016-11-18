@@ -20,6 +20,7 @@ cmd:option('-gpu', 0, 'Zero-indexed ID of the GPU to use; for CPU mode set -gpu 
 -- Optimization options
 cmd:option('-content_weight', 5e0)
 cmd:option('-style_weight', 1e2)
+cmd:option('-relu1_weight', 300)
 cmd:option('-tv_weight', 1e-3)
 cmd:option('-num_iterations', 1000)
 cmd:option('-normalize_gradients', false)
@@ -180,7 +181,7 @@ local function main(params)
         local loss_module
 		if name == 'relu1_1' then
 		  print('add special weight to relu1_1')
-		  loss_module = nn.ContentLoss(300, target, norm):float()
+		  loss_module = nn.ContentLoss(params.relu1_weight, target, norm):float()
 		else
 		  loss_module = nn.ContentLoss(params.content_weight, target, norm):float()
 		end
