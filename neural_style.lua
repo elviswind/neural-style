@@ -177,7 +177,12 @@ local function main(params)
         print("Setting up content layer", i, ":", layer.name)
         local target = net:forward(content_image_caffe):clone()
         local norm = params.normalize_gradients
-        local loss_module = nn.ContentLoss(params.content_weight, target, norm):float()
+        local loss_module
+		if name == 'relu1_1' then
+		  loss_module = nn.ContentLoss(50, target, norm):float()
+		else
+		  loss_module = nn.ContentLoss(params.content_weight, target, norm):float()
+		end
         if params.gpu >= 0 then
           if params.backend ~= 'clnn' then
             loss_module:cuda()
