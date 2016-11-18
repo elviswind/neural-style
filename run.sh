@@ -1,0 +1,1 @@
+th neural_style.lua -backend cudnn -cudnn_autotune -content_layers 'relu3_4' -init image -num_iterations 10000 -content_image ~/images/test.jpg
